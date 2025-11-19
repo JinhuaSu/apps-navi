@@ -13,25 +13,39 @@ type Project = {
 
 const projects: Project[] = [
   {
+    slug: "offeruc",
+    title: "OffeRuc",
+    description: "AI快速填简历表格浏览器插件。",
+    url: "https://offeruc.simashuhui.cn",
+    tags: ["人效", "沟通"],
+    defaultEmbed: true,
+  },
+  {
+    slug: "course",
+    title: "Course AI",
+    description: "人大生成式人工智能培训课。",
+    url: "https://course.simashuhui.cn/",
+    tags: ["课程", "教育"],
+    defaultEmbed: true,
+  },
+  {
     slug: "video-translate",
     title: "Video Translate",
-    description: "为长视频自动生成多语字幕与翻译，下发到全球渠道。",
+    description: "为长视频自动生成多语字幕与音频克隆，支持角色标注、字幕优化等人工介入。",
     url: "https://video-translate.simashuhui.cn",
     tags: ["AI", "字幕"],
-    defaultEmbed: true,
   },
   {
     slug: "auto-sync",
     title: "Auto Sync",
-    description: "多平台自动同步内容，保持不同业务线一致的上线节奏。",
+    description: "多平台自动同步内容，从抖音、快手、西瓜、B站、头条中监控指定作者，并下载视频上传youtube",
     url: "https://autosync.simashuhui.cn",
     tags: ["自动化", "多平台"],
-    defaultEmbed: true,
   },
   {
     slug: "promote-link",
     title: "Promote Link",
-    description: "一键生成活动推广链接，支持渠道追踪与投放反馈。",
+    description: "短剧推广平台，接入Shortmax,Goodshort,KalosTv,Dramabox等渠道数万部可推广获利短剧。",
     url: "https://promote-link.simashuhui.cn/",
     tags: ["营销", "追踪"],
   },
@@ -43,9 +57,30 @@ const projects: Project[] = [
     tags: ["VR", "交互"],
   },
   {
+    slug: "digital-human",
+    title: "Digital Human",
+    description: "实时驱动的AI数字人主播，覆盖直播讲解、客服与导览场景。",
+    url: "https://digital-human.simashuhui.cn",
+    tags: ["AI", "数字人"],
+  },
+  {
+    slug: "med-chat",
+    title: "Med Chat",
+    description: "医疗知识图谱驱动的智能问诊对话助手，支持病例检索。",
+    url: "https://med-chat.simashuhui.cn",
+    tags: ["医疗", "对话"],
+  },
+  {
+    slug: "vr-med",
+    title: "VR Med",
+    description: "以VR模拟方式训练医护流程，可视化复现实验操作。",
+    url: "https://vr-med.simashuhui.cn",
+    tags: ["VR", "医疗"],
+  },
+  {
     slug: "bricks",
     title: "Bricks",
-    description: "低代码积木化平台，自由组合业务体验与组件。",
+    description: "人大文创积木3d说明书。",
     url: "https://bricks.simashuhui.cn",
     tags: ["低代码", "组件库"],
   },
@@ -63,13 +98,7 @@ const projects: Project[] = [
     url: "https://engine.simashuhui.cn",
     tags: ["数据", "实时"],
   },
-  {
-    slug: "offeruc",
-    title: "Offer UC",
-    description: "Offer与候选人互动中心，自动化沟通每一次更新。",
-    url: "https://offeruc.simashuhui.cn",
-    tags: ["人效", "沟通"],
-  },
+
 ];
 
 export default function Home() {
@@ -102,7 +131,7 @@ export default function Home() {
                 Apps Navi · 轻量导航
               </h1>
               <p className="text-lg text-zinc-600">
-                汇总我在 simashuhui.cn 旗下正在运行的工具与实验项目。每个卡片都可快速访问，方便在一个页面内感受不同产品的气质。
+                汇总在 simashuhui.cn 旗下正在运行的工具与实验项目。每个卡片都可快速访问，方便在一个页面内感受不同产品的气质。
               </p>
             </div>
             <div className="flex flex-wrap gap-3 text-sm text-zinc-500">
@@ -111,8 +140,11 @@ export default function Home() {
                 实时运行中
               </span>
               <span className="inline-flex items-center gap-2 rounded-full bg-zinc-900/5 px-3 py-1 font-medium text-zinc-600">
-                {projects.length} 组产品实验
+                {projects.length} 组产品
               </span>
+            </div>
+            <div className="rounded-2xl border border-zinc-200 bg-white/80 px-4 py-3 text-sm text-zinc-600 shadow-sm">
+              如需测试账号或体验版本，微信 / 手机号（同号） 13522117899，备注需求即可快速开通。
             </div>
           </div>
 
