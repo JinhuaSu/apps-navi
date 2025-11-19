@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+type ProjectCategory = "数字孪生" | "营销" | "智能";
+
 type Project = {
   slug: string;
   title: string;
@@ -9,6 +11,7 @@ type Project = {
   url: string;
   tags: string[];
   defaultEmbed?: boolean;
+  category: ProjectCategory;
 };
 
 const projects: Project[] = [
@@ -19,6 +22,7 @@ const projects: Project[] = [
     url: "https://offeruc.simashuhui.cn",
     tags: ["人效", "沟通"],
     defaultEmbed: true,
+    category: "智能",
   },
   {
     slug: "course",
@@ -27,6 +31,7 @@ const projects: Project[] = [
     url: "https://course.simashuhui.cn/",
     tags: ["课程", "教育"],
     defaultEmbed: true,
+    category: "营销",
   },
   {
     slug: "video-translate",
@@ -34,6 +39,7 @@ const projects: Project[] = [
     description: "为长视频自动生成多语字幕与音频克隆，支持角色标注、字幕优化等人工介入。",
     url: "https://video-translate.simashuhui.cn",
     tags: ["AI", "字幕"],
+    category: "智能",
   },
   {
     slug: "auto-sync",
@@ -41,6 +47,7 @@ const projects: Project[] = [
     description: "多平台自动同步内容，从抖音、快手、西瓜、B站、头条中监控指定作者，并下载视频上传youtube",
     url: "https://autosync.simashuhui.cn",
     tags: ["自动化", "多平台"],
+    category: "营销",
   },
   {
     slug: "promote-link",
@@ -48,6 +55,7 @@ const projects: Project[] = [
     description: "短剧推广平台，接入Shortmax,Goodshort,KalosTv,Dramabox等渠道数万部可推广获利短剧。",
     url: "https://promote-link.simashuhui.cn/",
     tags: ["营销", "追踪"],
+    category: "营销",
   },
   {
     slug: "vr-gallery",
@@ -55,6 +63,8 @@ const projects: Project[] = [
     description: "沉浸式VR作品展厅，展示创意内容与交互案例。",
     url: "https://vr-gallery.simashuhui.cn",
     tags: ["VR", "交互"],
+    category: "数字孪生",
+    defaultEmbed: true,
   },
   {
     slug: "digital-human",
@@ -62,6 +72,7 @@ const projects: Project[] = [
     description: "实时驱动的AI数字人主播，覆盖直播讲解、客服与导览场景。",
     url: "https://digital-human.simashuhui.cn",
     tags: ["AI", "数字人"],
+    category: "数字孪生",
   },
   {
     slug: "med-chat",
@@ -69,6 +80,7 @@ const projects: Project[] = [
     description: "医疗知识图谱驱动的智能问诊对话助手，支持病例检索。",
     url: "https://med-chat.simashuhui.cn",
     tags: ["医疗", "对话"],
+    category: "智能",
   },
   {
     slug: "vr-med",
@@ -76,6 +88,7 @@ const projects: Project[] = [
     description: "以VR模拟方式训练医护流程，可视化复现实验操作。",
     url: "https://vr-med.simashuhui.cn",
     tags: ["VR", "医疗"],
+    category: "数字孪生",
   },
   {
     slug: "bricks",
@@ -83,6 +96,7 @@ const projects: Project[] = [
     description: "人大文创积木3d说明书。",
     url: "https://bricks.simashuhui.cn",
     tags: ["低代码", "组件库"],
+    category: "数字孪生",
   },
   {
     slug: "ad-helper",
@@ -90,16 +104,55 @@ const projects: Project[] = [
     description: "智能广告投放助手，给出预算与素材的最佳策略。",
     url: "https://ad-helper.simashuhui.cn",
     tags: ["广告", "分析"],
+    category: "智能",
   },
   {
     slug: "engine",
     title: "Engine",
-    description: "统一数据引擎，负责接入、建模与实时指标。",
+    description: "统一数据知识切片引擎，负责处理、智能检索，服务于智能问答。",
     url: "https://engine.simashuhui.cn",
     tags: ["数据", "实时"],
+    category: "智能",
   },
-
+  {
+    slug: "report-guy",
+    title: "Report Guy",
+    description: "数据处理，自动建模，代码执行结果形成报告，面向宏观经济与社会数据的标准化AI分析报告。",
+    url: "https://report-guy.simashuhui.cn",
+    tags: ["数据", "报告"],
+    category: "智能",
+  },
+  {
+    slug: "sql-boy",
+    title: "SQL Boy",
+    description: "数据库智能问答，自带金融数据库。",
+    url: "https://sql-boy.simashuhui.cn",
+    tags: ["数据", "查询"],
+    category: "智能",
+  },
+  {
+    slug: "carbon-map",
+    title: "Carbon Map",
+    description: "遥感影像与碳排放地图，支持碳排放量计算与分析。",
+    url: "https://carbon-map.simashuhui.cn",
+    tags: ["遥感", "碳排"],
+    category: "智能",
+  },
 ];
+
+const categoryOrder: ProjectCategory[] = [ "智能", "数字孪生", "营销",];
+
+const categoryDescriptions: Record<ProjectCategory, string> = {
+  数字孪生: "以数字人、VR 与 3D 形式复刻真实业务流程，打造沉浸式体验。",
+  营销: "帮助运营团队在多渠道投放、分发与客户沟通中实现自动化增长。",
+  智能: "AI 课程、知识引擎与问答产品，为复杂决策与内容生产提供智能助力。",
+};
+
+const groupedProjects = categoryOrder.map((category) => ({
+  category,
+  description: categoryDescriptions[category],
+  projects: projects.filter((project) => project.category === category),
+}));
 
 export default function Home() {
   const [previewEnabled, setPreviewEnabled] = useState<Record<string, boolean>>(
@@ -162,7 +215,7 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-base leading-7 text-white/80">
-                数据工程、AI 产品与实时交互实验室。我们用快速迭代的方式探索企业增长的下一步。
+                数据智能、AI营销与虚拟体验实验室。我们用快速迭代的方式探索企业增长的下一步。
               </p>
               <div className="flex flex-wrap gap-3">
                 <a
@@ -188,99 +241,119 @@ export default function Home() {
           </div>
         </header>
 
-        <section className="grid gap-8 md:grid-cols-2">
-          {projects.map((project) => (
-            <article
-              key={project.slug}
-              className="flex flex-col gap-5 rounded-3xl border border-zinc-100 bg-white/90 p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur-sm"
-            >
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-zinc-400">
-                    Project
-                  </p>
-                  <h2 className="text-2xl font-semibold text-zinc-900">
-                    {project.title}
+        <div className="space-y-16">
+          {groupedProjects.map(({ category, description, projects }) => (
+            <section key={category} className="space-y-6">
+              <div className="space-y-2">
+                <p className="text-xs uppercase tracking-[0.2em] text-zinc-400">
+                  Category
+                </p>
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                  <h2 className="text-3xl font-semibold text-zinc-900">
+                    {category}
                   </h2>
+                  <p className="max-w-2xl text-sm leading-6 text-zinc-600">
+                    {description}
+                  </p>
                 </div>
-                <div className="flex flex-wrap items-center justify-end gap-3">
-                  <span className="rounded-full bg-zinc-900/5 px-3 py-1 text-xs font-medium text-zinc-700">
-                    {project.slug}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => handleTogglePreview(project.slug)}
-                    className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium transition ${
-                      previewEnabled[project.slug]
-                        ? "border-emerald-200 bg-emerald-50 text-emerald-600"
-                        : "border-zinc-200 bg-white text-zinc-500 hover:border-zinc-300"
-                    }`}
-                    aria-pressed={previewEnabled[project.slug]}
+              </div>
+
+              <div className="grid gap-8 md:grid-cols-2">
+                {projects.map((project) => (
+                  <article
+                    key={project.slug}
+                    className="flex flex-col gap-5 rounded-3xl border border-zinc-100 bg-white/90 p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur-sm"
                   >
-                    实时预览
-                    <span
-                      className={`relative h-4 w-7 rounded-full transition ${
-                        previewEnabled[project.slug]
-                          ? "bg-emerald-500/70"
-                          : "bg-zinc-200"
-                      }`}
-                    >
-                      <span
-                        className={`absolute top-0.5 h-3 w-3 rounded-full bg-white shadow transition ${
-                          previewEnabled[project.slug]
-                            ? "left-3"
-                            : "left-0.5"
-                        }`}
-                      />
-                    </span>
-                  </button>
-                </div>
+                    <div className="flex items-center justify-between gap-4">
+                      <div>
+                        <p className="text-xs uppercase tracking-[0.2em] text-zinc-400">
+                          Project
+                        </p>
+                        <h3 className="text-2xl font-semibold text-zinc-900">
+                          {project.title}
+                        </h3>
+                      </div>
+                      <div className="flex flex-wrap items-center justify-end gap-3">
+                        <span className="rounded-full bg-zinc-900/5 px-3 py-1 text-xs font-medium text-zinc-700">
+                          {project.slug}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => handleTogglePreview(project.slug)}
+                          className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium transition ${
+                            previewEnabled[project.slug]
+                              ? "border-emerald-200 bg-emerald-50 text-emerald-600"
+                              : "border-zinc-200 bg-white text-zinc-500 hover:border-zinc-300"
+                          }`}
+                          aria-pressed={previewEnabled[project.slug]}
+                        >
+                          实时预览
+                          <span
+                            className={`relative h-4 w-7 rounded-full transition ${
+                              previewEnabled[project.slug]
+                                ? "bg-emerald-500/70"
+                                : "bg-zinc-200"
+                            }`}
+                          >
+                            <span
+                              className={`absolute top-0.5 h-3 w-3 rounded-full bg-white shadow transition ${
+                                previewEnabled[project.slug]
+                                  ? "left-3"
+                                  : "left-0.5"
+                              }`}
+                            />
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+
+                    <p className="text-sm leading-6 text-zinc-600">
+                      {project.description}
+                    </p>
+
+                    {previewEnabled[project.slug] ? (
+                      <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950/80">
+                        <iframe
+                          src={project.url}
+                          title={`${project.title} 预览`}
+                          loading="lazy"
+                          referrerPolicy="no-referrer"
+                          className="h-64 w-full"
+                        />
+                      </div>
+                    ) : (
+                      <div className="rounded-2xl border border-dashed border-zinc-200 bg-zinc-50 px-4 py-6 text-sm text-zinc-500">
+                        点击上方「实时预览」拨钮即可载入此项目的最新在线画面。
+                      </div>
+                    )}
+
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      <div className="flex flex-wrap gap-2">
+                        {project.tags.map((tag) => (
+                          <span
+                            key={`${project.slug}-${tag}`}
+                            className="rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-600"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-zinc-700"
+                      >
+                        访问项目
+                        <span aria-hidden>↗</span>
+                      </a>
+                    </div>
+                  </article>
+                ))}
               </div>
-
-              <p className="text-sm leading-6 text-zinc-600">
-                {project.description}
-              </p>
-
-              {previewEnabled[project.slug] ? (
-                <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950/80">
-                  <iframe
-                    src={project.url}
-                    title={`${project.title} 预览`}
-                    loading="lazy"
-                    referrerPolicy="no-referrer"
-                    className="h-64 w-full"
-                  />
-                </div>
-              ) : (
-                <div className="rounded-2xl border border-dashed border-zinc-200 bg-zinc-50 px-4 py-6 text-sm text-zinc-500">
-                  点击上方「实时预览」拨钮即可载入此项目的最新在线画面。
-                </div>
-              )}
-
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={`${project.slug}-${tag}`}
-                      className="rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-600"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-zinc-700"
-                >
-                  访问项目
-                  <span aria-hidden>↗</span>
-                </a>
-              </div>
-            </article>
+            </section>
           ))}
-        </section>
+        </div>
       </main>
     </div>
   );
