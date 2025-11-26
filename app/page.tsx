@@ -142,7 +142,7 @@ const projects: Project[] = [
     slug: "bid-bot",
     title: "Bid Bot",
     description: "智能标书助手，提取招标文件关键信息，生成标书。",
-    url: "https://bid-bot.simashuhui.cn",
+    url: "https://bidbot.simashuhui.cn",
     tags: ["标书", "生成"],
     category: "智能",
   },
