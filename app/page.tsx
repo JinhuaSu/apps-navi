@@ -138,6 +138,14 @@ const projects: Project[] = [
     tags: ["遥感", "碳排"],
     category: "智能",
   },
+  {
+    slug: "bid-bot",
+    title: "Bid Bot",
+    description: "智能标书助手，提取招标文件关键信息，生成标书。",
+    url: "https://bid-bot.simashuhui.cn",
+    tags: ["标书", "生成"],
+    category: "智能",
+  },
 ];
 
 const categoryOrder: ProjectCategory[] = [ "智能", "数字孪生", "营销",];
