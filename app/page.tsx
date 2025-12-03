@@ -99,6 +99,14 @@ const projects: Project[] = [
     category: "数字孪生",
   },
   {
+    slug: "smart-hero",
+    title: "SmartHero",
+    description: "cocos小游戏",
+    url: "http://smart-hero.simashuhui.cn",
+    tags: ["游戏", "cocos"],
+    category: "数字孪生",
+  },
+  {
     slug: "ad-helper",
     title: "Ad Helper",
     description: "智能广告投放助手，给出预算与素材的最佳策略。",
