@@ -134,7 +134,7 @@ const projects: Project[] = [
     slug: "sql-boy",
     title: "SQL Boy",
     description: "数据库智能问答，自带金融数据库。",
-    url: "https://sql-boy.simashuhui.cn",
+    url: "https://sqlboy.simashuhui.cn",
     tags: ["数据", "查询"],
     category: "智能",
   },
