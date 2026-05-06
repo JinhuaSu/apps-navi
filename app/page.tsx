@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-type ProjectCategory = "数字孪生" | "营销" | "智能" | "词元系列";
+type ProjectCategory = "数字孪生" | "营销" | "智能" | "智元";
 
 type Project = {
   slug: string;
@@ -164,49 +164,49 @@ const projects: Project[] = [
   },
   {
     slug: "electoken",
-    title: "电力词元",
-    description: "面向电力领域的词元化数据与智能应用。",
+    title: "电力智元",
+    description: "面向电力领域的智元化数据与智能应用。",
     url: "https://electoken.simashuhui.cn",
-    tags: ["词元", "电力"],
-    category: "词元系列",
+    tags: ["智元", "电力"],
+    category: "智元",
   },
   {
     slug: "astrolabe",
     title: "观星AI",
     description: "观星与天文场景下的智能辅助与内容能力。",
     url: "https://astrolabe.simashuhui.cn",
-    tags: ["词元", "天文"],
-    category: "词元系列",
+    tags: ["智元", "天文"],
+    category: "智元",
   },
   {
     slug: "strawboat",
     title: "草船投票",
     description: "轻量在线投票与意见征集。",
     url: "https://strawboat.simashuhui.cn",
-    tags: ["词元", "投票"],
-    category: "词元系列",
+    tags: ["智元", "投票"],
+    category: "智元",
   },
   {
     slug: "databloom",
     title: "数码莲华",
     description: "数据智能与知识莲华系列产品入口。",
     url: "https://databloom.simashuhui.cn",
-    tags: ["词元", "数据"],
-    category: "词元系列",
+    tags: ["智元", "数据"],
+    category: "智元",
   },
   {
     slug: "sandboxing",
     title: "达尔文沙箱",
     description: "安全沙箱与演化式实验环境。",
     url: "https://sandboxing.simashuhui.cn",
-    tags: ["词元", "沙箱"],
-    category: "词元系列",
+    tags: ["智元", "沙箱"],
+    category: "智元",
   },
 ];
 
 const categoryOrder: ProjectCategory[] = [
+  "智元",
   "智能",
-  "词元系列",
   "数字孪生",
   "营销",
 ];
@@ -215,8 +215,7 @@ const categoryDescriptions: Record<ProjectCategory, string> = {
   数字孪生: "以数字人、VR 与 3D 形式复刻真实业务流程，打造沉浸式体验。",
   营销: "帮助运营团队在多渠道投放、分发与客户沟通中实现自动化增长。",
   智能: "AI 课程、知识引擎与问答产品，为复杂决策与内容生产提供智能助力。",
-  词元系列:
-    "围绕 Token / 词元理念构建的产品线，覆盖电力、观星、投票、数据与安全沙箱等场景。",
+  智元: "基于大量 Token 消耗的下一代智能应用。",
 };
 
 const groupedProjects = categoryOrder.map((category) => ({
