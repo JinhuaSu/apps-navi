@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-type ProjectCategory = "数字孪生" | "营销" | "智能";
+type ProjectCategory = "数字孪生" | "营销" | "智能" | "词元系列";
 
 type Project = {
   slug: string;
@@ -69,9 +69,17 @@ const projects: Project[] = [
   {
     slug: "digital-human",
     title: "Digital Human",
-    description: "实时驱动的AI数字人主播，覆盖直播讲解、客服与导览场景。",
+    description: "基于视频的 2D 数字人生成，适用于直播讲解、客服与导览等场景。",
     url: "https://digital-human.simashuhui.cn",
-    tags: ["AI", "数字人"],
+    tags: ["2D", "数字人", "视频"],
+    category: "数字孪生",
+  },
+  {
+    slug: "leader",
+    title: "Leader 数字人",
+    description: "网页端实时 3D 数字人，适用于讲解、导览与交互展示。",
+    url: "https://leader.simashuhui.cn",
+    tags: ["3D", "数字人", "Web"],
     category: "数字孪生",
   },
   {
@@ -154,14 +162,61 @@ const projects: Project[] = [
     tags: ["标书", "生成"],
     category: "智能",
   },
+  {
+    slug: "electoken",
+    title: "电力词元",
+    description: "面向电力领域的词元化数据与智能应用。",
+    url: "https://electoken.simashuhui.cn",
+    tags: ["词元", "电力"],
+    category: "词元系列",
+  },
+  {
+    slug: "astrolabe",
+    title: "观星AI",
+    description: "观星与天文场景下的智能辅助与内容能力。",
+    url: "https://astrolabe.simashuhui.cn",
+    tags: ["词元", "天文"],
+    category: "词元系列",
+  },
+  {
+    slug: "strawboat",
+    title: "草船投票",
+    description: "轻量在线投票与意见征集。",
+    url: "https://strawboat.simashuhui.cn",
+    tags: ["词元", "投票"],
+    category: "词元系列",
+  },
+  {
+    slug: "databloom",
+    title: "数码莲华",
+    description: "数据智能与知识莲华系列产品入口。",
+    url: "https://databloom.simashuhui.cn",
+    tags: ["词元", "数据"],
+    category: "词元系列",
+  },
+  {
+    slug: "sandboxing",
+    title: "达尔文沙箱",
+    description: "安全沙箱与演化式实验环境。",
+    url: "https://sandboxing.simashuhui.cn",
+    tags: ["词元", "沙箱"],
+    category: "词元系列",
+  },
 ];
 
-const categoryOrder: ProjectCategory[] = [ "智能", "数字孪生", "营销",];
+const categoryOrder: ProjectCategory[] = [
+  "智能",
+  "词元系列",
+  "数字孪生",
+  "营销",
+];
 
 const categoryDescriptions: Record<ProjectCategory, string> = {
   数字孪生: "以数字人、VR 与 3D 形式复刻真实业务流程，打造沉浸式体验。",
   营销: "帮助运营团队在多渠道投放、分发与客户沟通中实现自动化增长。",
   智能: "AI 课程、知识引擎与问答产品，为复杂决策与内容生产提供智能助力。",
+  词元系列:
+    "围绕 Token / 词元理念构建的产品线，覆盖电力、观星、投票、数据与安全沙箱等场景。",
 };
 
 const groupedProjects = categoryOrder.map((category) => ({
