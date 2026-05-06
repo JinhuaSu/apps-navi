@@ -164,11 +164,12 @@ const projects: Project[] = [
   },
   {
     slug: "electoken",
-    title: "电力智元",
-    description: "面向电力领域的智元化数据与智能应用。",
+    title: "电力词元",
+    description: "以电力衡量大模型计价的token聚合平台。",
     url: "https://electoken.simashuhui.cn",
     tags: ["智元", "电力"],
     category: "智元",
+    defaultEmbed: true,
   },
   {
     slug: "astrolabe",
